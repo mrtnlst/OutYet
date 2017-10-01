@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Helper.h"
+#import "RequestiTunes.h"
 
 @interface ViewController : UIViewController
-
 
 @end
 
