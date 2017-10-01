@@ -55,24 +55,34 @@
     [self.songTextField setBackgroundColor:[UIColor whiteColor]];
     [self.songTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [self.view addSubview:self.songTextField];
+    
+    self.checkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.checkButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.checkButton setBackgroundColor:[UIColor colorWithRed:92.0/255.0 green:247.0/255.0 blue:255.0/255.0 alpha:1.0]];
+    [self.checkButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.checkButton setTitle:@"Check" forState:UIControlStateNormal];
+    [self.view addSubview:_checkButton];
 }
 
 - (void) setUpConstraints {
     
-    // Create a dictionary for VFL.
+    // Create a dictionaries for VFL.
     NSDictionary *viewsDictionary = @{@"artistLabel": self.artistLabel,
                                       @"artistTextField": self.artistTextField,
                                       @"songLabel": self.songLabel,
-                                      @"songTextField": self.songTextField};
+                                      @"songTextField": self.songTextField,
+                                      @"checkButton": self.checkButton};
+    
+    NSDictionary *metricsDictionary = @{@"bottomGap": @20, @"topGap": @100};
     
     // Create container with anchors.
-    UILayoutGuide *container = [UILayoutGuide new];
-    [self.view addLayoutGuide:container];
-    [container.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
-    [self.artistTextField.topAnchor constraintEqualToAnchor:container.topAnchor].active = YES;
-    [self.songTextField.bottomAnchor constraintEqualToAnchor:container.bottomAnchor].active = YES;
-    
-    // Create constraints for each row of Label and TextField.
+//    UILayoutGuide *container = [UILayoutGuide new];
+//    [self.view addLayoutGuide:container];
+//    [container.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+//    [self.artistTextField.topAnchor constraintEqualToAnchor:container.topAnchor].active = YES;
+//    [self.songTextField.bottomAnchor constraintEqualToAnchor:container.bottomAnchor].active = YES;
+
+    // Create constraints for Labels and TextFields.
     NSArray *constraintArtist = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[artistLabel]-[artistTextField]-|"
                                                                         options:NSLayoutFormatAlignAllFirstBaseline
                                                                         metrics:nil
@@ -82,14 +92,31 @@
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
-    // Create vertical constraints. No | for superview needed, because anchors for TextFields are set.
-    NSArray *constraintVertical = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[artistTextField]-[songTextField]"
+    // No | for superview needed, because anchors for TextFields are set.
+    NSArray *constraintVertical = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(topGap)-[artistTextField]-[songTextField]"
                                                                           options:NSLayoutFormatAlignAllLeading+ NSLayoutFormatAlignAllTrailing
-                                                                          metrics:nil
+                                                                          metrics:metricsDictionary
                                                                             views:viewsDictionary];
+    
+    // Create constraints for button.
+    
+    // Center button horizontally in row.
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.checkButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    
+    NSArray *constraintButtonHorizontal = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[checkButton(100)]-(>=1)-|"
+                                                                      options:NSLayoutFormatAlignAllBottom
+                                                                      metrics:nil
+                                                                        views:viewsDictionary];
+    NSArray *constraintButtonVertical = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[songTextField]-[checkButton]"
+                                                                                options:0
+                                                                                metrics:metricsDictionary
+                                                                                  views:viewsDictionary];
+    
     [self.view addConstraints:constraintArtist];
     [self.view addConstraints:constraintSong];
     [self.view addConstraints:constraintVertical];
+    [self.view addConstraints:constraintButtonVertical];
+    [self.view addConstraints:constraintButtonHorizontal];
 }
 
 
