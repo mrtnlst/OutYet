@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "Helper.h"
 #import "RequestiTunes.h"
+#import "AddEntryViewController.h"
 
 @interface HomeViewController : UIViewController
 

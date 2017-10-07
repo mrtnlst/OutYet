@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B30F44C1F8188C700DB48EF /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B30F4491F8188C700DB48EF /* Helper.m */; };
 		5B30F44D1F8188C700DB48EF /* RequestiTunes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B30F44B1F8188C700DB48EF /* RequestiTunes.m */; };
+		5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */; };
 		5BD596661F5DAC4F00074CE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD596651F5DAC4F00074CE1 /* AppDelegate.m */; };
 		5BD596691F5DAC4F00074CE1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD596681F5DAC4F00074CE1 /* HomeViewController.m */; };
 		5BD5966C1F5DAC4F00074CE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD5966A1F5DAC4F00074CE1 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 		5B30F4491F8188C700DB48EF /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		5B30F44A1F8188C700DB48EF /* Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		5B30F44B1F8188C700DB48EF /* RequestiTunes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestiTunes.m; sourceTree = "<group>"; };
+		5BB869AB1F8975CF0017F1BC /* AddEntryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEntryViewController.h; sourceTree = "<group>"; };
+		5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEntryViewController.m; sourceTree = "<group>"; };
 		5BD596611F5DAC4F00074CE1 /* OutYet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutYet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD596641F5DAC4F00074CE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5BD596651F5DAC4F00074CE1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 				5BD596651F5DAC4F00074CE1 /* AppDelegate.m */,
 				5BD596671F5DAC4F00074CE1 /* HomeViewController.h */,
 				5BD596681F5DAC4F00074CE1 /* HomeViewController.m */,
+				5BB869AB1F8975CF0017F1BC /* AddEntryViewController.h */,
+				5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */,
 				5BD5966A1F5DAC4F00074CE1 /* Main.storyboard */,
 				5BD5966D1F5DAC4F00074CE1 /* Assets.xcassets */,
 				5BD5966F1F5DAC4F00074CE1 /* LaunchScreen.storyboard */,
@@ -162,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD596691F5DAC4F00074CE1 /* HomeViewController.m in Sources */,
+				5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */,
 				5B30F44D1F8188C700DB48EF /* RequestiTunes.m in Sources */,
 				5BD596741F5DAC4F00074CE1 /* main.m in Sources */,
 				5BD596661F5DAC4F00074CE1 /* AppDelegate.m in Sources */,
@@ -301,10 +307,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = OutYet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = martinlist.OutYet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,10 +321,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = OutYet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = martinlist.OutYet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

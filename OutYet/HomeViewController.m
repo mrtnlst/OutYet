@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+//  HomeViewViewController.m
 //  OutYet
 //
 //  Created by martin on 04.09.17.
@@ -10,22 +10,12 @@
 #import "Helper.h"
 
 @interface HomeViewController ()
-//@property (nonatomic, strong) UIScrollView *scrollView;
-//@property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIView *buttonContainerView;
 @property (nonatomic, strong) UIView *contentContainerView;
-
-//@property (nonatomic, strong) UILabel *artistLabel;
-//@property (nonatomic, strong) UILabel *songLabel;
 @property (nonatomic, strong) UILabel *headingLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
-//@property (nonatomic, strong) UILabel *resultLabel;
-//@property (nonatomic, strong) UITextField *artistTextField;
-//@property (nonatomic, strong) UITextField *songTextField;
-//@property (nonatomic, strong) UIButton *checkButton;
 @property (nonatomic, strong) UIButton *checkEntriesButton;
 @property (nonatomic, strong) UIButton *addEntryButton;
-
 @end
 
 @implementation HomeViewController
@@ -34,7 +24,6 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:105.0/255.0 blue:97.0/255.0 alpha:1.0]];
-    
     [self setUpViews];
     [self setUpConstraints];
    
@@ -55,41 +44,6 @@
     self.buttonContainerView.translatesAutoresizingMaskIntoConstraints = NO;
 //    [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
     [self.contentContainerView addSubview:self.buttonContainerView];
-    
-  
-//
-//    [self.scrollView addSubview:self.contentView];
-//    [self.view addSubview:self.scrollView];
-    
-//    // Create views.
-//    self.artistLabel = [UILabel new];
-//    self.artistLabel.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.artistLabel setText:@"Artist:"];
-//    [self.artistLabel setContentHuggingPriority:251 forAxis:UILayoutConstraintAxisHorizontal];
-//    [self.artistLabel setTextColor:[UIColor whiteColor]];
-//    [self.view addSubview:self.artistLabel];
-////    [self.contentView addSubview:self.artistLabel];
-
-//    self.artistTextField = [UITextField new];
-//    self.artistTextField.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.artistTextField setBackgroundColor:[UIColor whiteColor]];
-//    [self.artistTextField setBorderStyle:UITextBorderStyleRoundedRect];
-//    [self.view addSubview:self.artistTextField];
-////    [self.contentView addSubview:self.artistTextField];
-
-//    self.songLabel = [UILabel new];
-//    self.songLabel.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.songLabel setText:@"Song:"];
-//    [self.songLabel setTextColor:[UIColor whiteColor]];
-//    [self.view addSubview:self.songLabel];
-////    [self.contentView addSubview:self.songLabel];
-
-//    self.songTextField = [UITextField new];
-//    self.songTextField.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.songTextField setBackgroundColor:[UIColor whiteColor]];
-//    [self.songTextField setBorderStyle:UITextBorderStyleRoundedRect];
-//    [self.view addSubview:self.songTextField];
-////    [self.contentView addSubview:self.songTextField];
 
     self.headingLabel = [UILabel new];
     self.headingLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -114,25 +68,25 @@
 //    [self.view addSubview:self.resultLabel];
 ////    [self.contentView addSubview:self.resultLabel];
     
-    self.checkEntriesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.checkEntriesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.checkEntriesButton.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.checkEntriesButton setBackgroundColor:[UIColor colorWithRed:92.0/255.0 green:247.0/255.0 blue:255.0/255.0 alpha:1.0]];
     [self.checkEntriesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [self.checkEntriesButton setTitle:@"Check Entries" forState:UIControlStateNormal];
     [self.checkEntriesButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
-    [self.checkEntriesButton setTintColor:[UIColor whiteColor]];
     [self.checkEntriesButton addTarget:self action:@selector(checkEntriesButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-
+    [self.checkEntriesButton.layer setShadowOffset:CGSizeMake(0, 0)];
+    [self.checkEntriesButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [self.checkEntriesButton.layer setShadowOpacity:0.2];
+    
     [self.buttonContainerView addSubview:self.checkEntriesButton];
     
-    self.addEntryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.addEntryButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.addEntryButton.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.addEntryButton setBackgroundColor:[UIColor colorWithRed:92.0/255.0 green:247.0/255.0 blue:255.0/255.0 alpha:1.0]];
     [self.addEntryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [self.addEntryButton setTitle:@"New Entry" forState:UIControlStateNormal];
     [self.addEntryButton setImage:[UIImage imageNamed:@"PlusButton"] forState:UIControlStateNormal];
-    [self.addEntryButton setTintColor:[UIColor whiteColor]];
-//    [self.newEntryButton addTarget:self action:@selector(checkEntriesButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.addEntryButton addTarget:self action:@selector(addEntryButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.addEntryButton.layer setShadowOffset:CGSizeMake(0, 0)];
+    [self.addEntryButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [self.addEntryButton.layer setShadowOpacity:0.2];
     [self.buttonContainerView addSubview:self.addEntryButton];
 }
 
@@ -142,11 +96,7 @@
 //    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     // Create a dictionaries for VFL.
-    NSDictionary *viewsDictionary = @{/*@"artistLabel": self.artistLabel,*/
-//                                      @"artistTextField": self.artistTextField,
-//                                      @"songLabel": self.songLabel,
-//                                      @"songTextField": self.songTextField,
-                                      @"addEntryButton": self.addEntryButton,
+    NSDictionary *viewsDictionary = @{@"addEntryButton": self.addEntryButton,
                                       @"buttonContainerView": self.buttonContainerView,
                                       @"contentContainerView": self.contentContainerView,
                                       @"checkEntriesButton": self.checkEntriesButton,
@@ -252,7 +202,6 @@
 }
 
 -(void) checkEntriesButtonClicked:(UIButton*)sender {
-    [self.view endEditing:YES];
     NSLog(@"Initiating request.");
 //    NSLog(@"Artist: %@, Song: %@", [self.artistTextField text], [self.songTextField text]);
 //    [self.resultLabel setText:@"Checking for results.."];
@@ -271,6 +220,23 @@
 //        [self.resultLabel setText:@"Not found."];
 //    }
 }
+
+-(void) addEntryButtonClicked:(UIButton*)sender {
+    NSLog(@"New entry.");
+
+    AddEntryViewController *destinationController = [[AddEntryViewController alloc] init];
+                                                    
+     [self presentViewController:destinationController animated:YES completion:nil];
+    
+    
+}
+
+
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
