@@ -48,12 +48,12 @@
     // Create container views.
     self.contentContainerView = [[UIView alloc] init];
     self.contentContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.contentContainerView setBackgroundColor:[UIColor blueColor]];
+//    [self.contentContainerView setBackgroundColor:[UIColor blueColor]];
     [self.view addSubview:self.contentContainerView];
     
     self.buttonContainerView = [[UIView alloc] init];
     self.buttonContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
+//    [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
     [self.contentContainerView addSubview:self.buttonContainerView];
     
   
@@ -191,7 +191,7 @@
                                                                                    options:0
                                                                                    metrics:nil
                                                                                      views:viewsDictionary]];
-    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[headingLabel]-[descriptionLabel]-50-[buttonContainerView]-|"
+    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[headingLabel]-[descriptionLabel]-[buttonContainerView(116)]-|"
                                                                                  options:0
                                                                                  metrics:metricsDictionary
                                                                                    views:viewsDictionary]];
@@ -217,10 +217,14 @@
                                                                                   metrics:nil
                                                                                     views:viewsDictionary]];
     
-    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[addEntryButton(30)]-|"
+    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesButton(100)]-|"
                                                                                 options:0
                                                                                 metrics:metricsDictionary
                                                                                   views:viewsDictionary]];
+    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[addEntryButton(100)]-|"
+                                                                                      options:0
+                                                                                      metrics:metricsDictionary
+                                                                                        views:viewsDictionary]];
 
     // Result.
 //    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.resultLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
