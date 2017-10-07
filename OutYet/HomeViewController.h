@@ -11,7 +11,7 @@
 #import "Helper.h"
 #import "RequestiTunes.h"
 
-@interface ViewController : UIViewController
+@interface HomeViewController : UIViewController
 
 @end
 
