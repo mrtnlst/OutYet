@@ -154,16 +154,16 @@
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
     
-    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(buttonContainerSpace)-[addEntryButton(checkEntriesButton)]-(buttonContainerSpace)-[checkEntriesButton(buttonWidth)]-(buttonContainerSpace)-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(buttonContainerSpace)-[addEntryButton(checkEntriesButton)]-(buttonContainerSpace)-[checkEntriesButton(buttonWidth)]-(buttonContainerSpace)-|"
                                                                                       options:NSLayoutFormatAlignAllBottom
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
     
-    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesButton(buttonWidth)]-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesButton(buttonWidth)]-|"
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
-    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[addEntryButton(buttonWidth)]-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[addEntryButton(buttonWidth)]-|"
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
