@@ -31,8 +31,6 @@
 
 - (void)setUpViews {
     
-    //    self.contentView = [[UIView alloc] init];
-    
     // Create container views.
     self.contentContainerView = [[UIView alloc] init];
     self.contentContainerView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -50,14 +48,12 @@
     [self.headingLabel setTextColor:[UIColor whiteColor]];
     [self.headingLabel setFont:[UIFont systemFontOfSize:80]];
     [self.contentContainerView addSubview:self.headingLabel];
-    //    [self.contentView addSubview:self.headingLabel];
     
     self.descriptionLabel = [UILabel new];
     self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.descriptionLabel setText:@"Check availability of tracks on iTunes."];
     [self.descriptionLabel setTextColor:[UIColor whiteColor]];
     [self.contentContainerView addSubview:self.descriptionLabel];
-    //    [self.contentView addSubview:self.descriptionLabel];
     
     //    self.resultLabel = [UILabel new];
     //    self.resultLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -75,7 +71,6 @@
     [self.checkEntriesButton.layer setShadowOffset:CGSizeMake(0, 0)];
     [self.checkEntriesButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
     [self.checkEntriesButton.layer setShadowOpacity:0.2];
-    
     [self.buttonContainerView addSubview:self.checkEntriesButton];
     
     self.addEntryButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -90,20 +85,14 @@
 }
 
 - (void) setUpConstraints {
-    
-    //    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-    //    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
+
     // Create a dictionaries for VFL.
     NSDictionary *viewsDictionary = @{@"addEntryButton": self.addEntryButton,
                                       @"buttonContainerView": self.buttonContainerView,
                                       @"contentContainerView": self.contentContainerView,
                                       @"checkEntriesButton": self.checkEntriesButton,
                                       @"headingLabel": self.headingLabel,
-                                      @"descriptionLabel": self.descriptionLabel,
-                                      //                                      @"resultLabel": self.resultLabel,
-                                      /*@"scrollView": self.scrollView,
-                                       @"contentView": self.contentView*/};
+                                      @"descriptionLabel": self.descriptionLabel};
     
     NSDictionary *metricsDictionary = @{@"gap": @20,
                                         @"topGap": @10,
@@ -209,8 +198,6 @@
     AddEntryViewController *destinationController = [[AddEntryViewController alloc] init];
     
     [self presentViewController:destinationController animated:YES completion:nil];
-    
-    
 }
 
 
