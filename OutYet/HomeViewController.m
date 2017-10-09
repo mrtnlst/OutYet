@@ -12,8 +12,14 @@
 @interface HomeViewController ()
 @property (nonatomic, strong) UIView *buttonContainerView;
 @property (nonatomic, strong) UIView *contentContainerView;
+@property (nonatomic, strong) UIView *addEntryContainerView;
+@property (nonatomic, strong) UIView *checkEntriesContainerView;
+
 @property (nonatomic, strong) UILabel *headingLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
+@property (nonatomic, strong) UILabel *addEntryButtonLabel;
+@property (nonatomic, strong) UILabel *checkEntriesButtonLabel;
+
 @property (nonatomic, strong) UIButton *checkEntriesButton;
 @property (nonatomic, strong) UIButton *addEntryButton;
 @end
@@ -34,13 +40,19 @@
     // Create container views.
     self.contentContainerView = [[UIView alloc] init];
     self.contentContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    //    [self.contentContainerView setBackgroundColor:[UIColor blueColor]];
     [self.view addSubview:self.contentContainerView];
     
     self.buttonContainerView = [[UIView alloc] init];
     self.buttonContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    //    [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
     [self.contentContainerView addSubview:self.buttonContainerView];
+    
+    self.addEntryContainerView = [[UIView alloc] init];
+    self.addEntryContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonContainerView addSubview:self.addEntryContainerView];
+    
+    self.checkEntriesContainerView = [[UIView alloc] init];
+    self.checkEntriesContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonContainerView addSubview:self.checkEntriesContainerView];
     
     self.headingLabel = [UILabel new];
     self.headingLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -55,13 +67,19 @@
     [self.descriptionLabel setTextColor:[UIColor whiteColor]];
     [self.contentContainerView addSubview:self.descriptionLabel];
     
-    //    self.resultLabel = [UILabel new];
-    //    self.resultLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    //    [self.resultLabel setText:@"~Results~"];
-    //    [self.resultLabel setTextColor:[UIColor whiteColor]];
-    //    [self.resultLabel setNumberOfLines:4];
-    //    [self.view addSubview:self.resultLabel];
-    ////    [self.contentView addSubview:self.resultLabel];
+    self.addEntryButtonLabel = [UILabel new];
+    self.addEntryButtonLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.addEntryButtonLabel setText:@"New Entry"];
+    [self.addEntryButtonLabel setTextColor:[UIColor whiteColor]];
+    [self.addEntryButtonLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.addEntryContainerView addSubview:self.addEntryButtonLabel];
+    
+    self.checkEntriesButtonLabel = [UILabel new];
+    self.checkEntriesButtonLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.checkEntriesButtonLabel setText:@"Check Entries"];
+    [self.checkEntriesButtonLabel setTextColor:[UIColor whiteColor]];
+    [self.checkEntriesButtonLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.checkEntriesContainerView addSubview:self.checkEntriesButtonLabel];
     
     self.checkEntriesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.checkEntriesButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -71,7 +89,7 @@
     [self.checkEntriesButton.layer setShadowOffset:CGSizeMake(0, 0)];
     [self.checkEntriesButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
     [self.checkEntriesButton.layer setShadowOpacity:0.2];
-    [self.buttonContainerView addSubview:self.checkEntriesButton];
+    [self.checkEntriesContainerView addSubview:self.checkEntriesButton];
     
     self.addEntryButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.addEntryButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -81,7 +99,7 @@
     [self.addEntryButton.layer setShadowOffset:CGSizeMake(0, 0)];
     [self.addEntryButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
     [self.addEntryButton.layer setShadowOpacity:0.2];
-    [self.buttonContainerView addSubview:self.addEntryButton];
+    [self.addEntryContainerView addSubview:self.addEntryButton];
 }
 
 - (void) setUpConstraints {
@@ -92,14 +110,20 @@
                                       @"contentContainerView": self.contentContainerView,
                                       @"checkEntriesButton": self.checkEntriesButton,
                                       @"headingLabel": self.headingLabel,
-                                      @"descriptionLabel": self.descriptionLabel};
+                                      @"descriptionLabel": self.descriptionLabel,
+                                      @"addEntryLabelContainer": self.addEntryContainerView,
+                                      @"checkEntriesLabelContainer": self.checkEntriesContainerView,
+                                      @"addEntryButtonLabel": self.addEntryButtonLabel,
+                                      @"checkEntriesButtonLabel": self.checkEntriesButtonLabel,};
     
-    NSDictionary *metricsDictionary = @{@"gap": @20,
+    NSDictionary *metricsDictionary = @{@"gap": @0,
                                         @"topGap": @10,
                                         @"buttonWidth": @52,
-                                        @"buttonContainerSpace": @60,
+                                        @"labelContainerWidth": @100,
+                                        @"labelContainerHeight": @90,
+                                        @"buttonContainerSpace": @28,
                                         @"buttonContainerWidth": @284,
-                                        @"buttonContainerHeight": @68,
+                                        @"buttonContainerHeight": @106,
                                         @"contentContainerHeight": @250,
                                         @"contentContainerWidth": @300};
     
@@ -115,14 +139,14 @@
                                                                       options:0
                                                                       metrics:metricsDictionary
                                                                         views:viewsDictionary]];
+    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[headingLabel]-[descriptionLabel]-(gap)-[buttonContainerView(buttonContainerHeight)]-|"
+                                                                                      options:0
+                                                                                      metrics:metricsDictionary
+                                                                                        views:viewsDictionary]];
     
     // Constraints for headingLabel.
     [self.contentContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.headingLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[headingLabel]-(>=1)-|"
-                                                                                      options:0
-                                                                                      metrics:metricsDictionary
-                                                                                        views:viewsDictionary]];
-    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[headingLabel]-(gap)-[descriptionLabel]-(gap)-[buttonContainerView(buttonContainerHeight)]-|"
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
@@ -135,40 +159,66 @@
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
     
-    // Create constraints for buttonContainerView.
+    // Constraints for for buttonContainerView.
     [self.contentContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonContainerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     
-    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[buttonContainerView(buttonContainerWidth)]-|"
+    [self.contentContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[buttonContainerView(buttonContainerWidth)]-(>=1)-|"
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
     
-    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(buttonContainerSpace)-[addEntryButton(checkEntriesButton)]-(buttonContainerSpace)-[checkEntriesButton(buttonWidth)]-(buttonContainerSpace)-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(buttonContainerSpace)-[addEntryLabelContainer(labelContainerWidth)]-(buttonContainerSpace)-[checkEntriesLabelContainer(labelContainerWidth)]-(buttonContainerSpace)-|"
                                                                                       options:NSLayoutFormatAlignAllBottom
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
     
-    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesButton(buttonWidth)]-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[addEntryLabelContainer(labelContainerHeight)]-|"
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
-    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[addEntryButton(buttonWidth)]-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesLabelContainer(labelContainerHeight)]-|"
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
     
-    // Result.
-    //    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.resultLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    //     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.resultLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    //    NSArray *constraintResultHorizontal = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[resultLabel]-(>=1)-|"
-    //                                                                                       options:0
-    //                                                                                       metrics:nil
-    //                                                                                         views:viewsDictionary];
-    //    NSArray *constraintResultVertical = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[checkButton]-[resultLabel]"
-    //                                                                                     options:0
-    //                                                                                     metrics:metricsDictionary
-    //                                                                                       views:viewsDictionary];
-    //
+    // Constraints for addEntryLabelContainerView.
+    [self.addEntryContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.addEntryButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.addEntryContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    
+    [self.addEntryContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[addEntryButton(buttonWidth)]-(>=1)-|"
+                                                                                     options:NSLayoutFormatAlignAllBottom
+                                                                                     metrics:metricsDictionary
+                                                                                       views:viewsDictionary]];
+    
+    [self.addEntryContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.addEntryButtonLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.addEntryContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    
+    [self.addEntryContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[addEntryButtonLabel]-(>=1)-|"
+                                                                                            options:NSLayoutFormatAlignAllBottom
+                                                                                            metrics:metricsDictionary
+                                                                                              views:viewsDictionary]];
+    
+    [self.addEntryContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[addEntryButton(buttonWidth)][addEntryButtonLabel]-|"
+                                                                                     options:0
+                                                                                     metrics:metricsDictionary
+                                                                                       views:viewsDictionary]];
+    
+    // Constraints for checkEntriesLabelContainerView.
+    [self.checkEntriesContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.checkEntriesButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.checkEntriesContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    
+    [self.checkEntriesContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.checkEntriesButtonLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.checkEntriesContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    
+    [self.checkEntriesContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[checkEntriesButton(buttonWidth)]-(>=1)-|"
+                                                                                            options:NSLayoutFormatAlignAllBottom
+                                                                                            metrics:metricsDictionary
+                                                                                              views:viewsDictionary]];
+    [self.checkEntriesContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[checkEntriesButtonLabel]-(>=1)-|"
+                                                                                                options:NSLayoutFormatAlignAllBottom
+                                                                                                metrics:metricsDictionary
+                                                                                                  views:viewsDictionary]];
+    
+    [self.checkEntriesContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesButton(buttonWidth)][checkEntriesButtonLabel]-|"
+                                                                                            options:0
+                                                                                            metrics:metricsDictionary
+                                                                                              views:viewsDictionary]];
     
 }
 
@@ -200,9 +250,14 @@
     [self presentViewController:destinationController animated:YES completion:nil];
 }
 
+-(void)turnOnColors {
+    [self.checkEntriesContainerView setBackgroundColor:[UIColor orangeColor]];
+    [self.addEntryContainerView setBackgroundColor:[UIColor orangeColor]];
+    [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
+    [self.contentContainerView setBackgroundColor:[UIColor blueColor]];
+}
 
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
+-(UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
