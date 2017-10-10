@@ -37,6 +37,15 @@
     [self.view setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:105.0/255.0 blue:97.0/255.0 alpha:1.0]];
     [self setUpViews];
     [self setUpConstraints];
+    
+    // Changing textField on return.
+    [self.artistTextField setDelegate:self];
+    [self.songTextField setDelegate:self];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.artistTextField becomeFirstResponder];
 }
 
 - (void)setUpViews {
@@ -281,6 +290,21 @@
 -(void) cancelButtonClicked:(UIButton*)sender {
     NSLog(@"Going back.");
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField*) textField {
+    if (textField == self.artistTextField)
+    {
+        [self.artistTextField resignFirstResponder];
+        [self.songTextField becomeFirstResponder];
+    }
+    if (textField == self.songTextField)
+    {
+        [self.songTextField resignFirstResponder];
+        [self.artistTextField becomeFirstResponder];
+
+    }
+    return YES;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
