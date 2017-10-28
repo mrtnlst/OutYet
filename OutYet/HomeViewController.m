@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "Helper.h"
 
 @interface HomeViewController ()
 @property (nonatomic, strong) UIView *buttonContainerView;
@@ -22,6 +21,9 @@
 
 @property (nonatomic, strong) UIButton *checkEntriesButton;
 @property (nonatomic, strong) UIButton *addEntryButton;
+
+@property (nonatomic, strong) NSArray<Song *> *songArray;
+
 @end
 
 @implementation HomeViewController
@@ -223,23 +225,18 @@
 }
 
 -(void) checkEntriesButtonClicked:(UIButton*)sender {
-    NSLog(@"Initiating request.");
-    //    NSLog(@"Artist: %@, Song: %@", [self.artistTextField text], [self.songTextField text]);
-    //    [self.resultLabel setText:@"Checking for results.."];
-    //
-    //    // Create query string.
-    //    NSArray *array = [Helper createQueryStringWithArtist:[self.artistTextField text] withSong:[self.songTextField text]];
-    //
-    //    // Create iTunes request.
-    //    RequestiTunes  *itunesRequest = [[RequestiTunes alloc] initWithArtistName:[array objectAtIndex:0]
-    //
-    //                                                                withTrackName:[array objectAtIndex:1]];
-    //    if (itunesRequest.album != nil) {
-    //        [self.resultLabel setText:[NSString stringWithFormat:@"It's already out yet!\nArtist: %@\nSong: %@\nAlbum: %@", [itunesRequest artist], [itunesRequest track], [itunesRequest album]]];
-    //    }
-    //    else {
-    //        [self.resultLabel setText:@"Not found."];
-    //    }
+//    NSLog(@"Initiating request.");
+
+    NSManagedObjectContext *context = [OutYetDataStack sharedInstance].persistentContainer.viewContext;
+    self.songArray = [OutYetDataController fetchAllSamplesWithContext:context];
+    NSLog(@"Fetched songArray length: %lu", self.songArray.count);
+    for (Song *song in self.songArray) {
+        NSLog(@"------------------------------");
+        NSLog(@"Track Name: %@", song.trackName);
+        NSLog(@"Artist Name: %@", song.trackName);
+        NSLog(@"------------------------------");
+    }
+    
 }
 
 -(void) addEntryButtonClicked:(UIButton*)sender {

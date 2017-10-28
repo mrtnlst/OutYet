@@ -307,6 +307,15 @@
     return YES;
 }
 
+-(void) saveButtonClicked:(UIButton*)sender {
+//    NSLog(@"Saving entry.");
+//    SongMO *container = [[NSEntityDescription insertNewObjectForEntityForName:@"Song" inManagedObjectContext:[self managedObjectContext];
+//    [container setValue:@"Dimension" forKey:<#(nonnull NSString *)#>]
+    
+    
+    
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "OutYetDataController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,7 @@
     // Override point for customization after application launch.
     // Creating root view controller.
     
-    
+    [OutYetDataController loadHardcodedDatabaseIfNeccessary];
     return YES;
 }
 

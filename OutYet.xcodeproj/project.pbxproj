@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B30F44C1F8188C700DB48EF /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B30F4491F8188C700DB48EF /* Helper.m */; };
 		5B30F44D1F8188C700DB48EF /* RequestiTunes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B30F44B1F8188C700DB48EF /* RequestiTunes.m */; };
+		5B408F581FA27FF70097099D /* OutYetDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B408F571FA27FF70097099D /* OutYetDataController.m */; };
+		5B408F5B1FA502690097099D /* OutYetDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B408F5A1FA502690097099D /* OutYetDataStack.m */; };
 		5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */; };
 		5BD596661F5DAC4F00074CE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD596651F5DAC4F00074CE1 /* AppDelegate.m */; };
 		5BD596691F5DAC4F00074CE1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD596681F5DAC4F00074CE1 /* HomeViewController.m */; };
@@ -16,6 +18,9 @@
 		5BD5966E1F5DAC4F00074CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD5966D1F5DAC4F00074CE1 /* Assets.xcassets */; };
 		5BD596711F5DAC4F00074CE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD5966F1F5DAC4F00074CE1 /* LaunchScreen.storyboard */; };
 		5BD596741F5DAC4F00074CE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD596731F5DAC4F00074CE1 /* main.m */; };
+		5BFF26571F93EB0C004C2247 /* OutYetData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF26551F93EB0C004C2247 /* OutYetData.xcdatamodeld */; };
+		5BFF266B1F93EC68004C2247 /* Song+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF26691F93EC68004C2247 /* Song+CoreDataClass.m */; };
+		5BFF266C1F93EC68004C2247 /* Song+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF266A1F93EC68004C2247 /* Song+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,10 @@
 		5B30F4491F8188C700DB48EF /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		5B30F44A1F8188C700DB48EF /* Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		5B30F44B1F8188C700DB48EF /* RequestiTunes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestiTunes.m; sourceTree = "<group>"; };
+		5B408F561FA27FF70097099D /* OutYetDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutYetDataController.h; sourceTree = "<group>"; };
+		5B408F571FA27FF70097099D /* OutYetDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutYetDataController.m; sourceTree = "<group>"; };
+		5B408F591FA502690097099D /* OutYetDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutYetDataStack.h; sourceTree = "<group>"; };
+		5B408F5A1FA502690097099D /* OutYetDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutYetDataStack.m; sourceTree = "<group>"; };
 		5BB869AB1F8975CF0017F1BC /* AddEntryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEntryViewController.h; sourceTree = "<group>"; };
 		5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEntryViewController.m; sourceTree = "<group>"; };
 		5BD596611F5DAC4F00074CE1 /* OutYet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutYet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +45,11 @@
 		5BD596701F5DAC4F00074CE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BD596721F5DAC4F00074CE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BD596731F5DAC4F00074CE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5BFF26561F93EB0C004C2247 /* OutYetData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OutYetData.xcdatamodel; sourceTree = "<group>"; };
+		5BFF26671F93EC68004C2247 /* Song+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Song+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5BFF26681F93EC68004C2247 /* Song+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Song+CoreDataClass.h"; sourceTree = "<group>"; };
+		5BFF26691F93EC68004C2247 /* Song+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Song+CoreDataClass.m"; sourceTree = "<group>"; };
+		5BFF266A1F93EC68004C2247 /* Song+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Song+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +78,7 @@
 		5BD596581F5DAC4F00074CE1 = {
 			isa = PBXGroup;
 			children = (
+				5BFF26551F93EB0C004C2247 /* OutYetData.xcdatamodeld */,
 				5BD596631F5DAC4F00074CE1 /* OutYet */,
 				5BD596621F5DAC4F00074CE1 /* Products */,
 			);
@@ -80,6 +95,7 @@
 		5BD596631F5DAC4F00074CE1 /* OutYet */ = {
 			isa = PBXGroup;
 			children = (
+				5BFF266E1F93EC77004C2247 /* Data */,
 				5B30F44E1F8188DA00DB48EF /* Request */,
 				5BD596641F5DAC4F00074CE1 /* AppDelegate.h */,
 				5BD596651F5DAC4F00074CE1 /* AppDelegate.m */,
@@ -94,6 +110,21 @@
 				5BD596731F5DAC4F00074CE1 /* main.m */,
 			);
 			path = OutYet;
+			sourceTree = "<group>";
+		};
+		5BFF266E1F93EC77004C2247 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5BFF26681F93EC68004C2247 /* Song+CoreDataClass.h */,
+				5BFF26671F93EC68004C2247 /* Song+CoreDataProperties.h */,
+				5BFF26691F93EC68004C2247 /* Song+CoreDataClass.m */,
+				5BFF266A1F93EC68004C2247 /* Song+CoreDataProperties.m */,
+				5B408F591FA502690097099D /* OutYetDataStack.h */,
+				5B408F5A1FA502690097099D /* OutYetDataStack.m */,
+				5B408F561FA27FF70097099D /* OutYetDataController.h */,
+				5B408F571FA27FF70097099D /* OutYetDataController.m */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,9 +199,14 @@
 			files = (
 				5BD596691F5DAC4F00074CE1 /* HomeViewController.m in Sources */,
 				5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */,
+				5BFF266B1F93EC68004C2247 /* Song+CoreDataClass.m in Sources */,
 				5B30F44D1F8188C700DB48EF /* RequestiTunes.m in Sources */,
 				5BD596741F5DAC4F00074CE1 /* main.m in Sources */,
+				5B408F5B1FA502690097099D /* OutYetDataStack.m in Sources */,
 				5BD596661F5DAC4F00074CE1 /* AppDelegate.m in Sources */,
+				5BFF266C1F93EC68004C2247 /* Song+CoreDataProperties.m in Sources */,
+				5B408F581FA27FF70097099D /* OutYetDataController.m in Sources */,
+				5BFF26571F93EB0C004C2247 /* OutYetData.xcdatamodeld in Sources */,
 				5B30F44C1F8188C700DB48EF /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = OutYet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -320,6 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = OutYet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -351,6 +389,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5BFF26551F93EB0C004C2247 /* OutYetData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5BFF26561F93EB0C004C2247 /* OutYetData.xcdatamodel */,
+			);
+			currentVersion = 5BFF26561F93EB0C004C2247 /* OutYetData.xcdatamodel */;
+			name = OutYetData.xcdatamodeld;
+			path = OutYet/OutYetData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5BD596591F5DAC4F00074CE1 /* Project object */;
 }

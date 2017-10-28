@@ -11,6 +11,8 @@
 #import "Helper.h"
 #import "RequestiTunes.h"
 #import "AddEntryViewController.h"
+#import "OutYetDataController.h"
+
 
 @interface HomeViewController : UIViewController
 
