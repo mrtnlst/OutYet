@@ -111,7 +111,7 @@
     self.saveButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.saveButton setImage:[UIImage imageNamed:@"SaveButton"] forState:UIControlStateNormal];
-//    [self.saveButton addTarget:self action:@selector(checkEntriesButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.saveButton addTarget:self action:@selector(saveButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.saveButton.layer setShadowOffset:CGSizeMake(0, 0)];
     [self.saveButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
     [self.saveButton.layer setShadowOpacity:0.2];
@@ -289,7 +289,20 @@
 }
 -(void) cancelButtonClicked:(UIButton*)sender {
     NSLog(@"Going back.");
+    [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) saveButtonClicked:(UIButton*)sender {
+ 
+    NSString *artistName = [self.artistTextField text];
+    NSString *trackName = [self.songTextField text];
+    
+    NSManagedObjectContext *context = [OutYetDataStack sharedInstance].persistentContainer.viewContext;
+    [OutYetDataController insertSongWithTrackName:trackName artistName:artistName context:context];
+    [self.view endEditing:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
@@ -305,15 +318,6 @@
 
     }
     return YES;
-}
-
--(void) saveButtonClicked:(UIButton*)sender {
-//    NSLog(@"Saving entry.");
-//    SongMO *container = [[NSEntityDescription insertNewObjectForEntityForName:@"Song" inManagedObjectContext:[self managedObjectContext];
-//    [container setValue:@"Dimension" forKey:<#(nonnull NSString *)#>]
-    
-    
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

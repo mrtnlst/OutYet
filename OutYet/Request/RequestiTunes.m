@@ -24,11 +24,12 @@
         // Set the artist and track name.
         artist = [NSMutableString stringWithString: a];
         track = [NSMutableString stringWithString: t];
+        
+        // Create query string.
+        NSString *queryURL = [self createQueryURL];
+        [self getDataFrom:queryURL];
+        
     }
-    // Create query string.
-    NSString *queryURL = [self createQueryURL];
-    NSString *response = [self getDataFrom:queryURL];
-    [self analyseContentOf:response];
     
     // Return a pointer to the new object.
     return self;
@@ -50,22 +51,24 @@
     return queryURL;
 }
 
-- (NSString *)getDataFrom:(NSString *)queryURL {
+- (void)getDataFrom:(NSString *)queryURL {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
     [request setURL:[NSURL URLWithString:queryURL]];
     
-    NSError *error = nil;
-    NSHTTPURLResponse *responseCode = nil;
-    
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-    
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %li", queryURL, (long)[responseCode statusCode]);
-        return nil;
-    }
-    
-    return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithURL:[NSURL URLWithString:queryURL]
+            completionHandler:^(NSData *data,
+                                NSURLResponse *response,
+                                NSError *error) {
+                
+                if(error == nil) {
+                    [self analyseContentOf:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+                } else {
+                    NSLog(@"Error getting %@, HTTP status code %li", queryURL, (long)[error code]);
+                }
+                
+            }] resume];
 }
 
 - (void)analyseContentOf:(NSString *)response {

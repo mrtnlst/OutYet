@@ -20,17 +20,13 @@
         return;
     }
     
-    NSString *artistName = [NSString stringWithFormat:@"Dimension"];
-    NSString *trackName = [NSString stringWithFormat:@"Generator"];
-    [self insertSampleEntityWithTrackName:trackName artistName:artistName context:context];
-    
     [context performBlockAndWait:^{
         
         [sharedDataStack saveContext];
     }];
 }
 
-+ (void)insertSampleEntityWithTrackName:(NSString *)trackName artistName:(NSString *)artistName context:(NSManagedObjectContext *)context {
++ (void)insertSongWithTrackName:(NSString *)trackName artistName:(NSString *)artistName context:(NSManagedObjectContext *)context {
     
     Song *song = [[Song alloc] initWithContext:context];
     song.artistName = artistName;

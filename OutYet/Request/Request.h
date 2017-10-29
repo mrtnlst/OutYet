@@ -16,7 +16,7 @@
 
 - (id)initWithArtistName:(NSString *)a withTrackName:(NSString *)t;
 - (NSString*)createQueryURL;
-- (NSString*)getDataFrom:(NSString *)queryURL;
+- (void)getDataFrom:(NSString *)queryURL;
 - (void)analyseContentOf:(NSString *)response;
 - (void)printResults;
 

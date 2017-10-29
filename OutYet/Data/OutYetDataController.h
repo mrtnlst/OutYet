@@ -14,7 +14,7 @@
 @interface OutYetDataController : NSObject
 
 + (void)loadHardcodedDatabaseIfNeccessary;
-+ (void)insertSampleEntityWithTrackName:(NSString *)trackName artistName:(NSString *)artistName context:(NSManagedObjectContext *)context;
++ (void)insertSongWithTrackName:(NSString *)trackName artistName:(NSString *)artistName context:(NSManagedObjectContext *)context;
 + (NSArray<Song *> *)fetchAllSamplesWithContext:(NSManagedObjectContext *)context;
 
 @end

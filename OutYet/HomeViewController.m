@@ -228,15 +228,24 @@
 //    NSLog(@"Initiating request.");
 
     NSManagedObjectContext *context = [OutYetDataStack sharedInstance].persistentContainer.viewContext;
-    self.songArray = [OutYetDataController fetchAllSamplesWithContext:context];
-    NSLog(@"Fetched songArray length: %lu", self.songArray.count);
-    for (Song *song in self.songArray) {
-        NSLog(@"------------------------------");
-        NSLog(@"Track Name: %@", song.trackName);
-        NSLog(@"Artist Name: %@", song.trackName);
-        NSLog(@"------------------------------");
-    }
     
+    self.songArray = [OutYetDataController fetchAllSamplesWithContext:context];
+    
+    NSLog(@"Fetched songArray length: %lu", self.songArray.count);
+    NSLog(@"------------------------------");
+
+    if (self.songArray.count != 0) {
+        for (Song *song in self.songArray) {
+            __unused RequestiTunes *iTunesRequest = [[RequestiTunes alloc] initWithArtistName:song.artistName withTrackName:song.trackName];
+        }
+        
+//        for (Song *song in self.songArray) {
+//            NSLog(@"------------------------------");
+//            NSLog(@"Track Name: %@", song.trackName);
+//            NSLog(@"Artist Name: %@", song.trackName);
+//            NSLog(@"------------------------------");
+//        }
+    }
 }
 
 -(void) addEntryButtonClicked:(UIButton*)sender {
