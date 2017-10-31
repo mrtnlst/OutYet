@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B30F44C1F8188C700DB48EF /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B30F4491F8188C700DB48EF /* Helper.m */; };
 		5B30F44D1F8188C700DB48EF /* RequestiTunes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B30F44B1F8188C700DB48EF /* RequestiTunes.m */; };
+		5B406C111FA8D76700EEB93E /* ShowEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B406C101FA8D76700EEB93E /* ShowEntriesViewController.m */; };
 		5B408F581FA27FF70097099D /* OutYetDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B408F571FA27FF70097099D /* OutYetDataController.m */; };
 		5B408F5B1FA502690097099D /* OutYetDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B408F5A1FA502690097099D /* OutYetDataStack.m */; };
 		5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */; };
@@ -29,6 +30,8 @@
 		5B30F4491F8188C700DB48EF /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		5B30F44A1F8188C700DB48EF /* Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		5B30F44B1F8188C700DB48EF /* RequestiTunes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestiTunes.m; sourceTree = "<group>"; };
+		5B406C0F1FA8D76700EEB93E /* ShowEntriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowEntriesViewController.h; sourceTree = "<group>"; };
+		5B406C101FA8D76700EEB93E /* ShowEntriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowEntriesViewController.m; sourceTree = "<group>"; };
 		5B408F561FA27FF70097099D /* OutYetDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutYetDataController.h; sourceTree = "<group>"; };
 		5B408F571FA27FF70097099D /* OutYetDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutYetDataController.m; sourceTree = "<group>"; };
 		5B408F591FA502690097099D /* OutYetDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutYetDataStack.h; sourceTree = "<group>"; };
@@ -75,6 +78,19 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		5B406C0E1FA8D74500EEB93E /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5BD596671F5DAC4F00074CE1 /* HomeViewController.h */,
+				5BD596681F5DAC4F00074CE1 /* HomeViewController.m */,
+				5BB869AB1F8975CF0017F1BC /* AddEntryViewController.h */,
+				5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */,
+				5B406C0F1FA8D76700EEB93E /* ShowEntriesViewController.h */,
+				5B406C101FA8D76700EEB93E /* ShowEntriesViewController.m */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
 		5BD596581F5DAC4F00074CE1 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +115,7 @@
 				5B30F44E1F8188DA00DB48EF /* Request */,
 				5BD596641F5DAC4F00074CE1 /* AppDelegate.h */,
 				5BD596651F5DAC4F00074CE1 /* AppDelegate.m */,
-				5BD596671F5DAC4F00074CE1 /* HomeViewController.h */,
-				5BD596681F5DAC4F00074CE1 /* HomeViewController.m */,
-				5BB869AB1F8975CF0017F1BC /* AddEntryViewController.h */,
-				5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */,
+				5B406C0E1FA8D74500EEB93E /* View Controller */,
 				5BD5966A1F5DAC4F00074CE1 /* Main.storyboard */,
 				5BD5966D1F5DAC4F00074CE1 /* Assets.xcassets */,
 				5BD5966F1F5DAC4F00074CE1 /* LaunchScreen.storyboard */,
@@ -197,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B406C111FA8D76700EEB93E /* ShowEntriesViewController.m in Sources */,
 				5BD596691F5DAC4F00074CE1 /* HomeViewController.m in Sources */,
 				5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */,
 				5BFF266B1F93EC68004C2247 /* Song+CoreDataClass.m in Sources */,

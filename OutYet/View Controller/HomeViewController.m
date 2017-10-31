@@ -227,25 +227,28 @@
 -(void) checkEntriesButtonClicked:(UIButton*)sender {
 //    NSLog(@"Initiating request.");
 
-    NSManagedObjectContext *context = [OutYetDataStack sharedInstance].persistentContainer.viewContext;
+//    NSManagedObjectContext *context = [OutYetDataStack sharedInstance].persistentContainer.viewContext;
+//
+//    self.songArray = [OutYetDataController fetchAllSamplesWithContext:context];
+//
+//    NSLog(@"Fetched songArray length: %lu", self.songArray.count);
+//    NSLog(@"------------------------------");
+//
+//    if (self.songArray.count != 0) {
+//        for (Song *song in self.songArray) {
+//            __unused RequestiTunes *iTunesRequest = [[RequestiTunes alloc] initWithArtistName:song.artistName withTrackName:song.trackName];
+//        }
     
-    self.songArray = [OutYetDataController fetchAllSamplesWithContext:context];
     
-    NSLog(@"Fetched songArray length: %lu", self.songArray.count);
-    NSLog(@"------------------------------");
-
-    if (self.songArray.count != 0) {
-        for (Song *song in self.songArray) {
-            __unused RequestiTunes *iTunesRequest = [[RequestiTunes alloc] initWithArtistName:song.artistName withTrackName:song.trackName];
-        }
-        
 //        for (Song *song in self.songArray) {
 //            NSLog(@"------------------------------");
 //            NSLog(@"Track Name: %@", song.trackName);
 //            NSLog(@"Artist Name: %@", song.trackName);
 //            NSLog(@"------------------------------");
 //        }
-    }
+//    }
+    ShowEntriesViewController *destinationController = [[ShowEntriesViewController alloc] init];
+    [self presentViewController:destinationController animated:YES completion:nil];
 }
 
 -(void) addEntryButtonClicked:(UIButton*)sender {
