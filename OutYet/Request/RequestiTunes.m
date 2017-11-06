@@ -64,11 +64,23 @@
                 
                 if(error == nil) {
                     [self analyseContentOf:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSArray *message = [[NSArray alloc] initWithObjects:self.artist, self.track, [NSNumber numberWithBool:self.status], nil];
+                        
+                        NSDictionary *dict = [NSDictionary dictionaryWithObject:message forKey:@"message"];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationMessageEvent" object:nil userInfo:dict];
+                        // Your UI update code here
+                    });
+                    // set your message properties
+                    
                 } else {
                     NSLog(@"Error getting %@, HTTP status code %li", queryURL, (long)[error code]);
                 }
                 
             }] resume];
+    
+    
 }
 
 - (void)analyseContentOf:(NSString *)response {
@@ -88,16 +100,21 @@
                 track = [result objectForKey:@"trackName"];
                 artist = [result objectForKey:@"artistName"];
                 album = [result objectForKey:@"collectionName"];
+                self.status = YES;
+                
                 [self printResults];
                 break;
             }
+            self.status = YES;
         }
         if (!alreadyOut) {
             NSLog(@"No track/artist match found on iTunes.");
+            self.status = NO;
         }
     }
     else {
         NSLog(@"No results on iTunes.");
+        self.status = NO;
     }
 }
 

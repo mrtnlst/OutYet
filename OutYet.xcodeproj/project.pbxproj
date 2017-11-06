@@ -12,6 +12,7 @@
 		5B406C111FA8D76700EEB93E /* ShowEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B406C101FA8D76700EEB93E /* ShowEntriesViewController.m */; };
 		5B408F581FA27FF70097099D /* OutYetDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B408F571FA27FF70097099D /* OutYetDataController.m */; };
 		5B408F5B1FA502690097099D /* OutYetDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B408F5A1FA502690097099D /* OutYetDataStack.m */; };
+		5B457B6C1FAF843D000C1CB3 /* OutYetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B457B6B1FAF843D000C1CB3 /* OutYetTableViewCell.m */; };
 		5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */; };
 		5BD596661F5DAC4F00074CE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD596651F5DAC4F00074CE1 /* AppDelegate.m */; };
 		5BD596691F5DAC4F00074CE1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD596681F5DAC4F00074CE1 /* HomeViewController.m */; };
@@ -36,6 +37,8 @@
 		5B408F571FA27FF70097099D /* OutYetDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutYetDataController.m; sourceTree = "<group>"; };
 		5B408F591FA502690097099D /* OutYetDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutYetDataStack.h; sourceTree = "<group>"; };
 		5B408F5A1FA502690097099D /* OutYetDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutYetDataStack.m; sourceTree = "<group>"; };
+		5B457B6A1FAF843D000C1CB3 /* OutYetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OutYetTableViewCell.h; path = OutYet/OutYetTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		5B457B6B1FAF843D000C1CB3 /* OutYetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OutYetTableViewCell.m; path = OutYet/OutYetTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		5BB869AB1F8975CF0017F1BC /* AddEntryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEntryViewController.h; sourceTree = "<group>"; };
 		5BB869AC1F8975CF0017F1BC /* AddEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEntryViewController.m; sourceTree = "<group>"; };
 		5BD596611F5DAC4F00074CE1 /* OutYet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutYet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +139,8 @@
 				5B408F5A1FA502690097099D /* OutYetDataStack.m */,
 				5B408F561FA27FF70097099D /* OutYetDataController.h */,
 				5B408F571FA27FF70097099D /* OutYetDataController.m */,
+				5B457B6A1FAF843D000C1CB3 /* OutYetTableViewCell.h */,
+				5B457B6B1FAF843D000C1CB3 /* OutYetTableViewCell.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				TargetAttributes = {
 					5BD596601F5DAC4F00074CE1 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -210,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B457B6C1FAF843D000C1CB3 /* OutYetTableViewCell.m in Sources */,
 				5B406C111FA8D76700EEB93E /* ShowEntriesViewController.m in Sources */,
 				5BD596691F5DAC4F00074CE1 /* HomeViewController.m in Sources */,
 				5BB869AD1F8975CF0017F1BC /* AddEntryViewController.m in Sources */,
@@ -355,13 +362,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4853CED358;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = OutYet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = martinlist.OutYet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.OutYet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -370,13 +381,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4853CED358;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = OutYet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = martinlist.OutYet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.OutYet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "OutYetDataController.h"
+#import "ShowEntriesViewController.h"
+//#import "Helper.h"
+#import "RequestiTunes.h"
+#import "OutYetTableViewCell.h"
 
 @interface ShowEntriesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
-@property (strong,nonatomic) UITableView *table;
-@property (strong,nonatomic) NSArray     *content;
+@property (strong,nonatomic) UITableView *tableView;
 
 @end

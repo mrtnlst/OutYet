@@ -48,6 +48,8 @@
     [self.artistTextField becomeFirstResponder];
 }
 
+#pragma mark - Views and Constraints
+
 - (void)setUpViews {
     
     self.scrollView = [[UIScrollView alloc] init];
@@ -77,7 +79,7 @@
     
     self.headingLabel = [UILabel new];
     self.headingLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.headingLabel setText:@"Add new entry"];
+    [self.headingLabel setText:@"Add Entry"];
     [self.headingLabel setTextColor:[UIColor whiteColor]];
     [self.headingLabel setFont:[UIFont systemFontOfSize:40]];
     [self.scrollView addSubview:self.headingLabel];
@@ -277,16 +279,10 @@
                                                                                            options:0
                                                                                            metrics:metricsDictionary
                                                                                            views:viewsDictionary]];
-    
 }
 
-- (void)turnOnColors {
-    [self.formContainerView setBackgroundColor:[UIColor blueColor]];
-    [self.saveContainerView setBackgroundColor:[UIColor orangeColor]];
-    [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
-    [self.cancelContainerView setBackgroundColor:[UIColor orangeColor]];
+#pragma mark - UIButton Actions
 
-}
 -(void) cancelButtonClicked:(UIButton*)sender {
     NSLog(@"Going back.");
     [self.view endEditing:YES];
@@ -305,6 +301,8 @@
     
 }
 
+#pragma mark - Helper
+
 -(BOOL) textFieldShouldReturn:(UITextField*) textField {
     if (textField == self.artistTextField)
     {
@@ -318,6 +316,14 @@
 
     }
     return YES;
+}
+
+- (void)turnOnColors {
+    [self.formContainerView setBackgroundColor:[UIColor blueColor]];
+    [self.saveContainerView setBackgroundColor:[UIColor orangeColor]];
+    [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
+    [self.cancelContainerView setBackgroundColor:[UIColor orangeColor]];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

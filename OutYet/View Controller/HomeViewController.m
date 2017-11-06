@@ -12,14 +12,14 @@
 @property (nonatomic, strong) UIView *buttonContainerView;
 @property (nonatomic, strong) UIView *contentContainerView;
 @property (nonatomic, strong) UIView *addEntryContainerView;
-@property (nonatomic, strong) UIView *checkEntriesContainerView;
+@property (nonatomic, strong) UIView *showListContainerView;
 
 @property (nonatomic, strong) UILabel *headingLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
 @property (nonatomic, strong) UILabel *addEntryButtonLabel;
-@property (nonatomic, strong) UILabel *checkEntriesButtonLabel;
+@property (nonatomic, strong) UILabel *showListButtonLabel;
 
-@property (nonatomic, strong) UIButton *checkEntriesButton;
+@property (nonatomic, strong) UIButton *showListButton;
 @property (nonatomic, strong) UIButton *addEntryButton;
 
 @property (nonatomic, strong) NSArray<Song *> *songArray;
@@ -37,6 +37,8 @@
     
 }
 
+#pragma mark - Views and Constraints
+
 - (void)setUpViews {
     
     // Create container views.
@@ -52,9 +54,9 @@
     self.addEntryContainerView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.buttonContainerView addSubview:self.addEntryContainerView];
     
-    self.checkEntriesContainerView = [[UIView alloc] init];
-    self.checkEntriesContainerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.buttonContainerView addSubview:self.checkEntriesContainerView];
+    self.showListContainerView = [[UIView alloc] init];
+    self.showListContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.buttonContainerView addSubview:self.showListContainerView];
     
     self.headingLabel = [UILabel new];
     self.headingLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -76,22 +78,22 @@
     [self.addEntryButtonLabel setFont:[UIFont systemFontOfSize:12]];
     [self.addEntryContainerView addSubview:self.addEntryButtonLabel];
     
-    self.checkEntriesButtonLabel = [UILabel new];
-    self.checkEntriesButtonLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.checkEntriesButtonLabel setText:@"Check Entries"];
-    [self.checkEntriesButtonLabel setTextColor:[UIColor whiteColor]];
-    [self.checkEntriesButtonLabel setFont:[UIFont systemFontOfSize:12]];
-    [self.checkEntriesContainerView addSubview:self.checkEntriesButtonLabel];
+    self.showListButtonLabel = [UILabel new];
+    self.showListButtonLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.showListButtonLabel setText:@"Show Entries"];
+    [self.showListButtonLabel setTextColor:[UIColor whiteColor]];
+    [self.showListButtonLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.showListContainerView addSubview:self.showListButtonLabel];
     
-    self.checkEntriesButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.checkEntriesButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.checkEntriesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.checkEntriesButton setImage:[UIImage imageNamed:@"CheckButton"] forState:UIControlStateNormal];
-    [self.checkEntriesButton addTarget:self action:@selector(checkEntriesButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.checkEntriesButton.layer setShadowOffset:CGSizeMake(0, 0)];
-    [self.checkEntriesButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
-    [self.checkEntriesButton.layer setShadowOpacity:0.2];
-    [self.checkEntriesContainerView addSubview:self.checkEntriesButton];
+    self.showListButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.showListButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.showListButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.showListButton setImage:[UIImage imageNamed:@"ListButton"] forState:UIControlStateNormal];
+    [self.showListButton addTarget:self action:@selector(showListButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.showListButton.layer setShadowOffset:CGSizeMake(0, 0)];
+    [self.showListButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [self.showListButton.layer setShadowOpacity:0.2];
+    [self.showListContainerView addSubview:self.showListButton];
     
     self.addEntryButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.addEntryButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -110,13 +112,13 @@
     NSDictionary *viewsDictionary = @{@"addEntryButton": self.addEntryButton,
                                       @"buttonContainerView": self.buttonContainerView,
                                       @"contentContainerView": self.contentContainerView,
-                                      @"checkEntriesButton": self.checkEntriesButton,
+                                      @"showListButton": self.showListButton,
                                       @"headingLabel": self.headingLabel,
                                       @"descriptionLabel": self.descriptionLabel,
                                       @"addEntryLabelContainer": self.addEntryContainerView,
-                                      @"checkEntriesLabelContainer": self.checkEntriesContainerView,
+                                      @"showListLabelContainer": self.showListContainerView,
                                       @"addEntryButtonLabel": self.addEntryButtonLabel,
-                                      @"checkEntriesButtonLabel": self.checkEntriesButtonLabel,};
+                                      @"showListButtonLabel": self.showListButtonLabel,};
     
     NSDictionary *metricsDictionary = @{@"gap": @0,
                                         @"topGap": @10,
@@ -169,7 +171,7 @@
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
     
-    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(buttonContainerSpace)-[addEntryLabelContainer(labelContainerWidth)]-(buttonContainerSpace)-[checkEntriesLabelContainer(labelContainerWidth)]-(buttonContainerSpace)-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(buttonContainerSpace)-[addEntryLabelContainer(labelContainerWidth)]-(buttonContainerSpace)-[showListLabelContainer(labelContainerWidth)]-(buttonContainerSpace)-|"
                                                                                       options:NSLayoutFormatAlignAllBottom
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
@@ -178,7 +180,7 @@
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
-    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesLabelContainer(labelContainerHeight)]-|"
+    [self.buttonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[showListLabelContainer(labelContainerHeight)]-|"
                                                                                       options:0
                                                                                       metrics:metricsDictionary
                                                                                         views:viewsDictionary]];
@@ -203,50 +205,30 @@
                                                                                      metrics:metricsDictionary
                                                                                        views:viewsDictionary]];
     
-    // Constraints for checkEntriesLabelContainerView.
-    [self.checkEntriesContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.checkEntriesButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.checkEntriesContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    // Constraints for showListLabelContainerView.
+    [self.showListContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.showListButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.showListContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     
-    [self.checkEntriesContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.checkEntriesButtonLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.checkEntriesContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    [self.showListContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.showListButtonLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.showListContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     
-    [self.checkEntriesContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[checkEntriesButton(buttonWidth)]-(>=1)-|"
+    [self.showListContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[showListButton(buttonWidth)]-(>=1)-|"
                                                                                             options:NSLayoutFormatAlignAllBottom
                                                                                             metrics:metricsDictionary
                                                                                               views:viewsDictionary]];
-    [self.checkEntriesContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[checkEntriesButtonLabel]-(>=1)-|"
+    [self.showListContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[showListButtonLabel]-(>=1)-|"
                                                                                                 options:NSLayoutFormatAlignAllBottom
                                                                                                 metrics:metricsDictionary
                                                                                                   views:viewsDictionary]];
     
-    [self.checkEntriesContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[checkEntriesButton(buttonWidth)][checkEntriesButtonLabel]-|"
+    [self.showListContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[showListButton(buttonWidth)][showListButtonLabel]-|"
                                                                                             options:0
                                                                                             metrics:metricsDictionary
                                                                                               views:viewsDictionary]];
     
 }
 
--(void) checkEntriesButtonClicked:(UIButton*)sender {
-//    NSLog(@"Initiating request.");
+#pragma mark - UIButton Actions
 
-//    NSManagedObjectContext *context = [OutYetDataStack sharedInstance].persistentContainer.viewContext;
-//
-//    self.songArray = [OutYetDataController fetchAllSamplesWithContext:context];
-//
-//    NSLog(@"Fetched songArray length: %lu", self.songArray.count);
-//    NSLog(@"------------------------------");
-//
-//    if (self.songArray.count != 0) {
-//        for (Song *song in self.songArray) {
-//            __unused RequestiTunes *iTunesRequest = [[RequestiTunes alloc] initWithArtistName:song.artistName withTrackName:song.trackName];
-//        }
-    
-    
-//        for (Song *song in self.songArray) {
-//            NSLog(@"------------------------------");
-//            NSLog(@"Track Name: %@", song.trackName);
-//            NSLog(@"Artist Name: %@", song.trackName);
-//            NSLog(@"------------------------------");
-//        }
-//    }
+-(void) showListButtonClicked:(UIButton*)sender {
     ShowEntriesViewController *destinationController = [[ShowEntriesViewController alloc] init];
     [self presentViewController:destinationController animated:YES completion:nil];
 }
@@ -259,8 +241,10 @@
     [self presentViewController:destinationController animated:YES completion:nil];
 }
 
+#pragma mark - Helper
+
 -(void)turnOnColors {
-    [self.checkEntriesContainerView setBackgroundColor:[UIColor orangeColor]];
+    [self.showListContainerView setBackgroundColor:[UIColor orangeColor]];
     [self.addEntryContainerView setBackgroundColor:[UIColor orangeColor]];
     [self.buttonContainerView setBackgroundColor:[UIColor yellowColor]];
     [self.contentContainerView setBackgroundColor:[UIColor blueColor]];

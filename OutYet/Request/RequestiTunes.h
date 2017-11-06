@@ -11,4 +11,6 @@
 
 @interface RequestiTunes : NSObject <Request>
 
+@property BOOL status;
+
 @end
