@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *trackName;
 @property (nullable, nonatomic, copy) NSString *albumName;
 @property (nonatomic) int16_t year;
+@property (nonatomic) int16_t status;
 
 @end
 

@@ -26,11 +26,12 @@
 //    }];
 }
 
-+ (void)insertSongWithTrackName:(NSString *)trackName artistName:(NSString *)artistName context:(NSManagedObjectContext *)context {
++ (void)insertSongWithTrackName:(NSString *)trackName artistName:(NSString *)artistName context:(NSManagedObjectContext *)context WithStatus:(NSInteger)status{
     
     Song *song = [[Song alloc] initWithContext:context];
     song.artistName = artistName;
     song.trackName = trackName;
+    song.status = status;
     
     [context performBlockAndWait:^{
          OutYetDataStack *sharedDataStack = [OutYetDataStack sharedInstance];

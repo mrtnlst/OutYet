@@ -293,9 +293,12 @@
  
     NSString *artistName = [self.artistTextField text];
     NSString *trackName = [self.songTextField text];
+    // Remove whitespaces at the end and on the beginning.
+    NSString *trimmedArtistString = [artistName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *trimmedTrackString = [trackName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     NSManagedObjectContext *context = [OutYetDataStack sharedInstance].persistentContainer.viewContext;
-    [OutYetDataController insertSongWithTrackName:trackName artistName:artistName context:context];
+    [OutYetDataController insertSongWithTrackName:trimmedTrackString artistName:trimmedArtistString context:context WithStatus:0];
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
     

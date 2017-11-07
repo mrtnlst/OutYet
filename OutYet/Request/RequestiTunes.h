@@ -11,6 +11,6 @@
 
 @interface RequestiTunes : NSObject <Request>
 
-@property BOOL status;
+@property NSInteger status;
 
 @end

@@ -19,5 +19,6 @@
 @dynamic trackName;
 @dynamic albumName;
 @dynamic year;
+@dynamic status;
 
 @end

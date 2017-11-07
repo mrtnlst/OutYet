@@ -315,9 +315,10 @@
     NSArray *message = [dict valueForKey:@"message"];
     if (message != nil) {
         for (OutYetTableViewCell *cell in self.tableView.visibleCells) {
-            if ([cell.artistName.text isEqualToString:message[0]]) {
-                if ([[message objectAtIndex:2] boolValue]) {
+            if ([cell.artistName.text isEqualToString:message[0]] && [cell.trackName.text isEqualToString:message[1]]) {
+                if ([[message objectAtIndex:2] intValue] == 2) {
                     cell.statusImage.image = [UIImage imageNamed:@"SuccessSymbol"];
+                    // Update Result
                 }
                 else {
                     cell.statusImage.image = [UIImage imageNamed:@"FailedSymbol"];
